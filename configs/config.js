@@ -8,4 +8,5 @@ module.exports = {
   ipdbwallet: `${dbUrl}wallet`,
   ipdbfile: `${dbUrl}file`,
   ipdbproduct: `${dbUrl}product`,
+  ipdbticket: `${dbUrl}ticket`,
 };

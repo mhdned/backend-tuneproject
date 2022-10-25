@@ -38,7 +38,8 @@ exports.productBuyValidate = asyncHandler (async (req,res,next) => {
             }
             req.pay = Object({
                 userId : req.userId,
-                wallet : false
+                wallet : false,
+                key : req.body.key
             })
             next()
         }

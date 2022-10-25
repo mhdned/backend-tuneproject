@@ -16,7 +16,7 @@ const fileRoute = require("./user/FileRoutes");
 router.use("/file",fileRoute);
 const productRoute = require("./user/ProductRoute");
 router.use("/product",productRoute);
-// const reqRouter = require("./../routes/requestRoutes")
-// router.use("/req",reqRouter)
+const requestRoute = require("./user/RequestRoute");
+router.use("/request",requestRoute);
 
 module.exports = router;
