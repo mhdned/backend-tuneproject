@@ -1,5 +1,6 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require("express-async-handler");
-
+/*------<SHOW USER WALLET>------*/
 exports.walletShow = asyncHandler(async (req,res,next) => {
     try {
         res.status(200).json({

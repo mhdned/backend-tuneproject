@@ -1,7 +1,8 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require("express-async-handler");
 const axios = require('axios');
 const {ipdbproduct} = require('./../../configs/config')
-
+/*------<CREATE NEW PRODUCT>------*/
 exports.addProduct = asyncHandler (async (req,res,next) => {
     try {
         const product = req.product;
@@ -21,7 +22,7 @@ exports.addProduct = asyncHandler (async (req,res,next) => {
         return res.status(500).send("مشکلی رخ داده است");
     }
 })
-
+/*------<ALL PRODUCT>------*/
 exports.allProdcut = asyncHandler (async (req,res,next) => {
     try {
         const resp = await axios.get(ipdbproduct);
@@ -34,7 +35,7 @@ exports.allProdcut = asyncHandler (async (req,res,next) => {
         return res.status(500).send("مشکلی رخ داده است");
     }
 })
-
+/*------<SINGLE PRODUCT>------*/
 exports.singleProduct = asyncHandler(async(req,res,next) => {
     try {
         const resp = await axios.get(`${ipdbproduct}/${req.params.prodID}`);
@@ -47,12 +48,13 @@ exports.singleProduct = asyncHandler(async(req,res,next) => {
         return res.status(500).send("مشکلی رخ داده است");
     }
 })
-
+/*------<USER BUY SINGLE PRODUCT>------*/
 exports.buyProduct = asyncHandler(async(req,res,next) => {
     try {
         const resp = await axios.post(`${ipdbproduct}/${req.params.prodID}`,req.pay);
         if (resp) {
             req.data = resp.data;
+            return res.send(req.data);
         }
         next()
     } catch (error) {

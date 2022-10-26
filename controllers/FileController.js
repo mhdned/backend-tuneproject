@@ -1,5 +1,6 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require("express-async-handler");
-
+/*------<SHOW INFO AFTER FILE>------*/
 exports.uploadFile = asyncHandler(async (req,res,next) => {
     try {
         res.status(201).json({
@@ -11,7 +12,7 @@ exports.uploadFile = asyncHandler(async (req,res,next) => {
         return res.status(500).send("مشکلی رخ داده است");
     }
 })
-
+/*------<SHOW MESSAGE AFTER DELETE FILE>------*/
 exports.deleteFile = asyncHandler(async (req,res,next) => {
     try {
         res.status(201).json({

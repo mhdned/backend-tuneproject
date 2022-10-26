@@ -1,5 +1,6 @@
+/*------<DATABSE URL>------*/
 let dbUrl = 'http://127.0.0.1:6300/api/v3/';
-
+/*------<DATABASE ROUTES>------*/
 module.exports = {
   ipdbregister: `${dbUrl}auth/register`,
   ipdblogin: `${dbUrl}auth/login`,

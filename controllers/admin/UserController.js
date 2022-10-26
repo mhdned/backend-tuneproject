@@ -1,6 +1,7 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require("express-async-handler");
 const {timeZoneToDate} = require('./../../utils/convertorData')
-
+/*------<ALL USER>------*/
 exports.allUserShow = asyncHandler((req,res,next) => {
     try {
         res.status(200).json(req.allUser);
@@ -9,7 +10,7 @@ exports.allUserShow = asyncHandler((req,res,next) => {
         return res.status(500).send("مشکلی رخ داده است");
     }
 })
-
+/*------<SINGLE USER>------*/
 exports.userShow = asyncHandler((req,res,next) => {
     try {
         req.user.birth =  timeZoneToDate(req.user.birth);

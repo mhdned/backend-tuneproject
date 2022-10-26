@@ -1,3 +1,4 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require("express-async-handler");
 const axios = require('axios');
 const {
@@ -5,7 +6,7 @@ const {
     ipdblogin
 } = require('./../../configs/config')
 // const {logAndRes} = require("./../../utils/helperFunc")
-
+/*------<AUTH USER | CREATE NEW USER>------*/
 exports.auth = asyncHandler(async (req,res,next) => {
     try {
         const newUser = new Object({
@@ -20,23 +21,16 @@ exports.auth = asyncHandler(async (req,res,next) => {
         // logAndRes(res,newUser)
         const resp = await axios.post(ipdbregister,newUser);
         if (resp) {
-            res.status(201).json({
-                status : 'Success | 201',
-                route : resp.data.route,
-                token : resp.data.token,
-                user : {
-                    userName : resp.data.user.userName ,
-                    email : resp.data.user.email ,
-                    role : resp.data.user.role ,
-                }
-            });
+            req.data = resp.data;
+            req.userId = resp.data.user._id
+            next();
         }
     } catch (error) {
         console.log(error);
         return res.status(500).send("مشکلی رخ داده است");
     }
 })
-
+/*------<AUTH USER | LOGIN USER>------*/
 exports.login = asyncHandler(async (req,res,next) => {
     try {
         const newUser = new Object({

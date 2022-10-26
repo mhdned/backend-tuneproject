@@ -1,5 +1,6 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require("express-async-handler");
-
+/*------<PRODUCT VALIDATE>------*/
 exports.productValidate = asyncHandler((req,res,next) => {
     try {
         let productInfo = req.body;
@@ -29,16 +30,13 @@ exports.productValidate = asyncHandler((req,res,next) => {
         return res.status(500).send("مشکلی رخ داده است");
     }
 });
-
+/*------<PRODUCT BUY VALIDATE>------*/
 exports.productBuyValidate = asyncHandler (async (req,res,next) => {
     try {
         if (req.body.pay) {
-            if(req.body.wallet){
-                res.send('Pay with wallet');
-            }
             req.pay = Object({
                 userId : req.userId,
-                wallet : false,
+                wallet : req.body.wallet,
                 key : req.body.key
             })
             next()

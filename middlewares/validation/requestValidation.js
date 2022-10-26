@@ -1,5 +1,6 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require("express-async-handler");
-
+/*------<REQUEST VALIDATION>------*/
 exports.requestValidation = asyncHandler (async (req,res,next) => {
     try {
         const request = req.body;

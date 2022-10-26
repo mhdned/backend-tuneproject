@@ -1,5 +1,6 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require("express-async-handler");
-
+/*------<WALLET CHARGE VALIDATE>------*/
 exports.walletChargeValidate = asyncHandler (async (req,res,next) => {
     try {
         const amount = req.body.amount;

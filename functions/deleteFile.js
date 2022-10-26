@@ -1,5 +1,6 @@
+/*------<DELETE FILE FROM HOST>------*/
 module.exports = {
-    deleteFileFromHost : function(path,name){
+    deleteFileFromHost : function(name,path = 'public/image/'){
         
     }
 }

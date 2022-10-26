@@ -1,5 +1,6 @@
 /*------<INTIATE MULTER>------*/
 const multer = require("multer");
+/*------<MULTER PATH STORE>------*/
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/image/");
@@ -10,6 +11,7 @@ const multerStorage = multer.diskStorage({
     cb(null, uniqueSuffix);
   },
 });
+/*------<MULTER FILE FILTER>------*/
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image")) {
     cb(null, true);
@@ -26,5 +28,5 @@ const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter,
 });
-
+/*------<EXPORT MULTER>------*/
 exports.uploadUserFile = upload.single("userFile");

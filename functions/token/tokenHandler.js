@@ -1,6 +1,7 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
-
+/*------<CREATE TOKEN USER>------*/
 exports.createToken = async (userID) => {
   try {
     let token = jwt.sign({ userID }, process.env.JWT_SECURE_PK, {
@@ -13,7 +14,7 @@ exports.createToken = async (userID) => {
     return res.status(500).send(error);
   }
 };
-
+/*------<VERIFY TOKEN>------*/
 exports.verifyToken = asyncHandler(async (req, res, next) => {
     try {
       token = req.headers.authorization;

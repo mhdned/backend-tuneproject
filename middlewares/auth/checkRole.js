@@ -1,6 +1,7 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require('express-async-handler');
 const { token } = require('morgan');
-
+/*------<CHECK ADMIN>------*/
 exports.checkAdmin = asyncHandler((req,res,next) => {
     try {
         if (req.role === 'admin') {

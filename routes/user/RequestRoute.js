@@ -1,4 +1,4 @@
-/*------<INTIATE ROUTE>------*/
+/*------<IMPORTS>------*/
 const express = require("express");
 const router = express.Router();
 
@@ -14,12 +14,8 @@ const {showTicket} = require('./../../controllers/RequestController');
 */
 
 /*------<BODY ROUTE>------*/
-
 router.route('/')
     .post(verifyToken,requestValidation,sendTicket,showTicket)
     .get(verifyToken,allTicket)
-//     .get()
-// router.get('/:reqId');
-
 /*------<EXPORT ROUTE>------*/
 module.exports = router;

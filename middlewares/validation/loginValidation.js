@@ -1,6 +1,7 @@
+/*------<IMPORTS>------*/
 const IRCheck = require("ircheck");
 const asyncHandler = require("express-async-handler");
-
+/*------<LOGIN VALIDATION>------*/
 exports.loginValidate = asyncHandler((req,res,next) => {
     try {
         let userInfo = req.body;

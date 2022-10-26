@@ -1,9 +1,9 @@
+/*------<IMPORTS>------*/
 const IRCheck = require("ircheck");
 const validator = require("validator");
 const asyncHandler = require("express-async-handler");
-
 const {dateToTimeZone,passToHash} = require('./../../utils/convertorData')
-
+/*------<UPDATE VALIDATION>------*/
 exports.updateValidate = asyncHandler((req,res,next) => {
     try {
         let userInfo = req.body;
@@ -57,7 +57,7 @@ exports.updateValidate = asyncHandler((req,res,next) => {
         return res.status(500).send("مشکلی رخ داده است");
     }
 });
-
+/*------<CONVERT DATA UPDATE>------*/
 exports.convertUpdateData = asyncHandler((req,res,next) => {
     try {
         // hash password and change date to timezone

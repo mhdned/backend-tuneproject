@@ -1,3 +1,4 @@
+/*------<DROP ERROR>------*/
 module.exports = {
     dropError : function (res,error,message,type = `Server`,status = 500){
         console.log(`Error ((${type})) : ${error}`);

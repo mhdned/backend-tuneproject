@@ -1,11 +1,11 @@
+/*------<IMPORTS>------*/
 const IRCheck = require("ircheck");
 const validator = require("validator");
 const asyncHandler = require("express-async-handler");
 // const moment = require('moment-jalaali');
 // const bcrypt = require('bcrypt');
-
 const {dateToTimeZone,passToHash} = require('./../../utils/convertorData')
-
+/*------<REGISTER VALIDATION>------*/
 exports.registerValidate = asyncHandler((req,res,next) => {
     try {
         let userInfo = req.body;
@@ -46,7 +46,7 @@ exports.registerValidate = asyncHandler((req,res,next) => {
         return res.status(500).send("مشکلی رخ داده است");
     }
 });
-
+/*------<CONVERT DATA VALIDATION>------*/
 exports.convertData = asyncHandler((req,res,next) => {
     try {
         // hash password and change date to timezone

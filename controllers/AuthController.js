@@ -1,5 +1,6 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require("express-async-handler");
-
+/*------<SHOW INFO AFTER CREATE ACCOUNT>------*/
 exports.registerShow = asyncHandler(async (req,res,next) => {
     res.status(200).json({
         status : 'Success | 200',
@@ -12,7 +13,7 @@ exports.registerShow = asyncHandler(async (req,res,next) => {
         }
     });
 })
-
+/*------<SHOW INFO AFTER LOGIN ACCOUNT>------*/
 exports.loginShow = asyncHandler(async (req,res,next) => {
     try {
         res.status(200).json({

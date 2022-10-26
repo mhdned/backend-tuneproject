@@ -1,3 +1,6 @@
+/*------<IMPORTS>------*/
+
+/*------<FUNCTIONS>------*/
 module.exports = {
     logAndRes : function (res,param){
         console.log(`Value : ${param} | Type : ${typeof param}`);

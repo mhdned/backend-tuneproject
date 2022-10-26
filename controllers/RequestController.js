@@ -1,5 +1,6 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require("express-async-handler");
-
+/*------<SHOW TICKET AFTER SEND>------*/
 exports.showTicket = asyncHandler(async (req,res,next) => {
     try {
         res.json({

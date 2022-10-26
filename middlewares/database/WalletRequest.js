@@ -1,7 +1,8 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require("express-async-handler");
 const axios = require('axios');
 const {ipdbwallet} = require('./../../configs/config');
-
+/*------<FIND WALLET>------*/
 exports.findWallet = asyncHandler(async (req,res,next) => {
     try {
         const resp = await axios.get(`${ipdbwallet}/${req.userId}`);
@@ -15,7 +16,7 @@ exports.findWallet = asyncHandler(async (req,res,next) => {
         return res.status(500).send("مشکلی رخ داده است");
     }
 })
-
+/*------<CHARGE WALLET>------*/
 exports.chargeWallet = asyncHandler(async (req,res,next) => {
     try {
         const resp = await axios.put(`${ipdbwallet}/${req.userId}`,req.body);

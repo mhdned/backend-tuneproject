@@ -1,7 +1,8 @@
+/*------<IMPORTS>------*/
 const asyncHandler = require("express-async-handler");
 const axios = require('axios');
 const {ipdbfile} = require('./../../configs/config');
-
+/*------<FILE UPLOAD>------*/
 exports.fileUpload = asyncHandler(async (req,res,next) => {
     try {
         const fileUpload = req.file;
@@ -22,7 +23,7 @@ exports.fileUpload = asyncHandler(async (req,res,next) => {
         return res.status(500).send("مشکلی رخ داده است");
     }
 });
-
+/*------<FILE DELETE | DATABASE>------*/
 exports.fileDelete = asyncHandler (async (req,res,next) => {
     try {
         const fileName = req.body;
