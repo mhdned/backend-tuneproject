@@ -7,13 +7,15 @@ exports.loginValidate = asyncHandler((req,res,next) => {
         let userInfo = req.body;
         if (!userInfo.password 
             || typeof userInfo.password !== "string" 
-            || userInfo.password.search(/(\s)/g) !== -1)
+            || userInfo.password.search(/(\s)/g) !== -1
+            || userInfo.password === "")
         {
             return res.status(403).send("پسورد وارد شده اشتباه است");   
         }
         if (!userInfo.phoneNumber 
             || typeof (userInfo.phoneNumber * 1) !== "number" 
-            || !IRCheck.Phone.isMobile(userInfo.phoneNumber)) {
+            || !IRCheck.Phone.isMobile(userInfo.phoneNumber)
+            || userInfo.phoneNumber === "") {
             return res.status(403).send("شماره همراه وارد شده اشتباه است");
         }
         next();

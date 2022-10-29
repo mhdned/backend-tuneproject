@@ -9,13 +9,20 @@ exports.sendTicket = asyncHandler(async (req,res,next) => {
         const ticket = new Object({
             title : req.body.title,
             description : req.body.description,
-            userId : req.userId
+            userId : req.userId,
+            key : req.body.key
         })
         const resp = await axios.post(ipdbticket,ticket);
-        if (resp) {
+        if (resp.data.status === "success") {
             req.data = resp.data;
+            return next()
+        }else{
+            return res.status(403).json({
+                status : resp.data.status,
+                message : `تیکت ساخته نشد`,
+                route : resp.data.route,
+            })
         }
-        next()
     } catch (error) {
         console.log(error);
         return res.status(500).send("مشکلی رخ داده است");

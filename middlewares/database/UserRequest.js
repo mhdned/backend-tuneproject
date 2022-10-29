@@ -7,10 +7,11 @@ exports.findUser = asyncHandler(async (req,res,next) => {
     try {
         const resp = await axios.get(`${ipdbuser}/${req.userId}`);
         if (resp) {
-            req.userId = resp.data._id;
-            req.user = resp.data;
-            req.role = resp.data.role;   
+            req.userId = resp.data.user._id;
+            req.user = resp.data.user;
+            req.role = resp.data.user.role;   
         }
+        // console.log(resp.data.user.role);
         next()
     } catch (error) {
         console.log(error);
@@ -22,9 +23,9 @@ exports.updateUser = asyncHandler(async (req,res,next) => {
     try {
         const resp = await axios.patch(`${ipdbuser}/${req.userId}`,req.body);
         if (resp) {
-            req.userId = resp.data._id;
-            req.user = resp.data;
-            req.role = resp.data.role;   
+            req.userId = resp.data.user._id;
+            req.user = resp.data.user;
+            req.role = resp.data.user.role;   
         }
         next()
     } catch (error) {
@@ -49,10 +50,15 @@ exports.getAllUser = asyncHandler(async (req,res,next) => {
 exports.getSingleUser = asyncHandler(async (req,res,next) => {
     try {
         const resp = await axios.get(`${ipdbuser_un}/${req.params.username}`);
-        if (resp) {
-            req.user = resp.data;
+        if (resp.data.status !== 'failed') {
+            req.user = resp.data.user;
+            next()
+        }else{
+            return res.status(404).json({
+                status : resp.data.status,
+                message : `این کاربر وجود ندارد`
+            })
         }
-        next()
     } catch (error) {
         console.log(error);
         return res.status(500).send("مشکلی رخ داده است");

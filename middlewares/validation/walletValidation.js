@@ -5,10 +5,10 @@ exports.walletChargeValidate = asyncHandler (async (req,res,next) => {
     try {
         const amount = req.body.amount;
         if (amount < 1) {
-            return res.status(403).send("Errrrrrrrrrrror");
+            return res.status(403).send("میزان شارژ کیف ول باید بیشتر از 1 باشد");
         }
         if (typeof amount !== 'number') {
-            return res.status(403).send("Errrrrrrrrrrror");
+            return res.status(403).send("میزان شارژ باید عدد باشد");
         }
         next()
     } catch (error) {

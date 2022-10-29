@@ -20,11 +20,18 @@ exports.auth = asyncHandler(async (req,res,next) => {
         })
         // logAndRes(res,newUser)
         const resp = await axios.post(ipdbregister,newUser);
-        if (resp) {
+        if (resp.data.status === 'success') {
             req.data = resp.data;
             req.userId = resp.data.user._id
             next();
+        }else{
+            return res.status(401).json({
+                status : resp.data.status,
+                message : `کاربر ساخته نشد`,
+                route : resp.data.route,
+            })
         }
+        
     } catch (error) {
         console.log(error);
         return res.status(500).send("مشکلی رخ داده است");
@@ -37,12 +44,17 @@ exports.login = asyncHandler(async (req,res,next) => {
             password : req.body.password,
             phoneNumber : req.body.phoneNumber,
         })
-        // logAndRes(res,newUser)
         const resp = await axios.post(ipdblogin,newUser);
-        if (resp) {
+        if (resp.data.status === 'success') {
             req.data = resp.data;
+            return next()
+        }else{
+            return res.status(403).json({
+                status : resp.data.status,
+                message : `کاربر وجود ندارد یا پسورد اشتباه است`,
+                route : resp.data.route,
+            })
         }
-        next()
     } catch (error) {
         console.log(error);
         return res.status(500).send("مشکلی رخ داده است");

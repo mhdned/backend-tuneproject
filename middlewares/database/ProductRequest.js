@@ -14,7 +14,11 @@ exports.addProduct = asyncHandler (async (req,res,next) => {
         })
         const resp = await axios.post(ipdbproduct,newProduct);
         if (resp) {
-            req.data = resp.data;
+            req.data = {
+                title : resp.data.product.title,
+                price : resp.data.product.price,
+                entities : resp.data.product.entities,
+            };
         }
         next()
     } catch (error) {
@@ -39,10 +43,15 @@ exports.allProdcut = asyncHandler (async (req,res,next) => {
 exports.singleProduct = asyncHandler(async(req,res,next) => {
     try {
         const resp = await axios.get(`${ipdbproduct}/${req.params.prodID}`);
-        if (resp) {
+        if (resp.data.status !== 'failed') {
             req.data = resp.data;
+            next()
+        }else{
+            return res.status(404).json({
+                status : resp.data.status,
+                message : "این محصول وجود ندارد"
+            })
         }
-        next()
     } catch (error) {
         console.log(error);
         return res.status(500).send("مشکلی رخ داده است");

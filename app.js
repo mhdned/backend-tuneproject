@@ -4,6 +4,7 @@ const app = express();
 const path = require("path");
 const morgan = require("morgan");
 
+require('moment-timezone')
 /*------<MIDDLEWARE>------*/
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));

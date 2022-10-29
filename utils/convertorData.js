@@ -1,11 +1,11 @@
 /*------<IMPORTS>------*/
-const moment = require("moment-jalaali");
+const moment = require("jalali-moment");
 const bcrypt = require('bcrypt');
 /*------<FUNCTIONS>------*/
 module.exports = {
     dateToTimeZone : function (date){
         console.log(`Date : ${date}`);
-        date = moment(date).format('X');
+        date = moment(date).tz("Asia/Tehran").format('X');
         console.log(`TimeZone : ${date}`);
         return (date * 1);
     },

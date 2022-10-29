@@ -9,14 +9,19 @@ const {dateToTimeZone,passToHash} = require('./../../utils/convertorData')
 exports.registerValidate = asyncHandler((req,res,next) => {
     try {
         let userInfo = req.body;
-        if (!userInfo.userName || typeof userInfo.userName !== "string") {
+        if (!userInfo.userName 
+            || typeof userInfo.userName !== "string" 
+            || userInfo.userName === "") {
             return res.status(403).send("نام کاربری اشتباه است");
         }
-        if (!userInfo.fullName || typeof userInfo.fullName !== "string") {
+        if (!userInfo.fullName 
+            || typeof userInfo.fullName !== "string"
+            || userInfo.fullName === "") {
             return res.status(403).send("نام وارد شده اشتباه است");
         }
         if (!userInfo.email 
-            || typeof userInfo.email !== "string" 
+            || typeof userInfo.email !== "string"
+            || userInfo.email === ""
             || !validator.isEmail(userInfo.email)) {
             return res.status(403).send("ایمیل وارد شده اشتباه است");
         }
@@ -24,20 +29,27 @@ exports.registerValidate = asyncHandler((req,res,next) => {
             || !userInfo.passwordConfirm 
             || typeof userInfo.password !== "string" 
             || userInfo.password.search(/(\s)/g) !== -1
-            || userInfo.password !== userInfo.passwordConfirm)
+            || userInfo.password !== userInfo.passwordConfirm
+            || userInfo.password === ""
+            || userInfo.passwordConfirm === ""
+            )
         {
             return res.status(403).send("پسورد وارد شده اشتباه است");   
         }
         if (!userInfo.phoneNumber 
             || typeof (userInfo.phoneNumber * 1) !== "number" 
-            || !IRCheck.Phone.isMobile(userInfo.phoneNumber)) {
+            || !IRCheck.Phone.isMobile(userInfo.phoneNumber)
+            || userInfo.Phone === "") {
             return res.status(403).send("شماره همراه وارد شده اشتباه است");
         }
-        if(!userInfo.birth || typeof userInfo.birth !== "string"){
+        if(!userInfo.birth 
+            || typeof userInfo.birth !== "string"
+            || userInfo.birth === ""){
             return res.status(403).send("تاریخ تولد وارد شده اشتباه است");
         }
         if(!userInfo.nationalCode
-            || !IRCheck.National.isNationalCodeValid(userInfo.nationalCode)){
+            || !IRCheck.National.isNationalCodeValid(userInfo.nationalCode)
+            || userInfo.nationalCode === ""){
             return res.status(403).send("شماره ملی وارد شده اشتباه است");
         }
         next();
