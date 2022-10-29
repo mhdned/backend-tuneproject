@@ -1,0 +1,631 @@
+{
+	"info": {
+		"_postman_id": "4d993116-817a-4314-95fe-8d211bf5298a",
+		"name": "internProject | V-3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19811765"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\" : \"ali\",\r\n    \"fullName\" : \"ali ranjbar\",\r\n    \"password\" : \"123456789\",\r\n    \"passwordConfirm\" : \"123456789\",\r\n    \"email\" : \"mmwdo.fake.9895@gmail.com\",\r\n    \"phoneNumber\" : \"09211089578\",\r\n    \"nationalCode\" : \"0025406671\",\r\n    \"birth\" : \"1389-2-19\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/auth/register",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\" : \"123456789\",\r\n    \"phoneNumber\" : \"09211089556\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/auth/login",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "Add Product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"test product 2\",\r\n    \"price\" : 100,\r\n    \"entities\" : 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{backend-url}}/admin/product",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"admin",
+										"product"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "All User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{backend-url}}/admin/users",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"admin",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Single User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{backend-url}}/admin/users/Mmwdi",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"admin",
+										"users",
+										"Mmwdi"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Single User",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"mmwdikiani@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{backend-url}}/admin/users/Mmwdi",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"admin",
+										"users",
+										"Mmwdi"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Single User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{backend-url}}/admin/users/Mmwdi (2)",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"admin",
+										"users",
+										"Mmwdi (2)"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Request",
+					"item": [
+						{
+							"name": "Requests",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{backend-url}}/admin/requests",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"admin",
+										"requests"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{backend-url}}/admin/requests/63590157ba6345457d028a9b",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"admin",
+										"requests",
+										"63590157ba6345457d028a9b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Answer",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\" : \"accepted\",\r\n    \"key\" : \"accepted\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{backend-url}}/admin/requests/63590157ba6345457d028a9b",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"admin",
+										"requests",
+										"63590157ba6345457d028a9b"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Wallet",
+					"item": [
+						{
+							"name": "Check",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{backend-url}}/wallet",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"wallet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Charge",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"amount\" : 10,\r\n   \"key\" : \"wallet\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{backend-url}}/wallet",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"wallet"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "File",
+					"item": [
+						{
+							"name": "Upload",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userFile",
+											"type": "file",
+											"src": "/E:/ImageMehtiuo/React.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{backend-url}}/file",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"file"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"63563952be557cd178240817-1666683745896.jpeg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{backend-url}}/file",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"file"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "All Product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{backend-url}}/product",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{backend-url}}/product/63578f66e00b736a8b443123",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"product",
+										"63578f66e00b736a8b443123"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"pay\" : true,\r\n    \"wallet\" : true,\r\n    \"key\" : \"wallet\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{backend-url}}/product/63578f85e00b736a8b443126",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"product",
+										"63578f85e00b736a8b443126"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Request",
+					"item": [
+						{
+							"name": "Send Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"first request\",\r\n    \"description\" : \"something Wrong\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{backend-url}}/request",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Request",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{backend-url}}/request",
+									"host": [
+										"{{backend-url}}"
+									],
+									"path": [
+										"request"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User Info",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/user",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\" : \"mohammad kiani\",\r\n    \"email\" : \"mmwdiFayz23@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/user",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "backend-url",
+			"value": "http://localhost:6350",
+			"type": "string"
+		},
+		{
+			"key": "database-url",
+			"value": "http://localhost:6300",
+			"type": "string"
+		}
+	]
+}
