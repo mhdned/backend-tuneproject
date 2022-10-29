@@ -5,7 +5,11 @@ exports.uploadFile = asyncHandler(async (req,res,next) => {
     try {
         res.status(201).json({
             status : 'Success | 200',
-            file : req.data
+            file : {
+                name : req.data.file.name,
+                formatFile : req.data.file.formatFile,
+                size : req.data.file.size,
+            }
         });
     } catch (error) {
         console.log(error);

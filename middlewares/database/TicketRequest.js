@@ -35,7 +35,7 @@ exports.allTicket = asyncHandler(async (req,res,next) => {
         if (resp) {
             req.data = resp.data;
         }
-        return res.send(req.data);
+        return res.json(req.data);
         next()
     } catch (error) {
         console.log(error);
@@ -65,7 +65,12 @@ exports.singleTicketAdmin = asyncHandler(async(req,res,next) => {
         if (resp) {
             req.data = resp.data;
         }
-        return res.send(req.data);
+        return res.json({
+            title : req.data.request.title,
+            description : req.data.request.description,
+            status : req.data.request.status,
+            date : timeZoneToDate(req.data.request.date)
+        });
         // next()
     } catch (error) {
         console.log(error);
@@ -81,7 +86,13 @@ exports.singleTicketAdminAnswer = asyncHandler(async(req,res,next) => {
             req.data = resp.data;
         }
         req.data.request.date = timeZoneToDate(req.data.request.date);
-        return res.send(req.data);
+        return res.json({
+            message : req.data.message,
+            title : req.data.request.title,
+            description : req.data.request.description,
+            status : req.data.request.status,
+            date : req.data.request.date
+        });
         // next()
     } catch (error) {
         console.log(error);

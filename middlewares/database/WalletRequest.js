@@ -5,6 +5,7 @@ const {ipdbwallet} = require('./../../configs/config');
 /*------<FIND WALLET>------*/
 exports.findWallet = asyncHandler(async (req,res,next) => {
     try {
+        // console.log(req.userId);
         const resp = await axios.get(`${ipdbwallet}/${req.userId}`);
         if (resp) {
             req.wallet = resp.data
