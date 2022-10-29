@@ -24,7 +24,7 @@ exports.sendTicket = asyncHandler(async (req,res,next) => {
 /*------<ALL TICKET | ONLY FOR HIMSELF>------*/
 exports.allTicket = asyncHandler(async (req,res,next) => {
     try {
-        const resp = await axios.get(`${ipdbticket}/${req.userId}`);
+        const resp = await axios.get(`${ipdbticket}/user/${req.userId}`);
         if (resp) {
             req.data = resp.data;
         }
