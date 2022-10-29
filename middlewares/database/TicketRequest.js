@@ -34,6 +34,14 @@ exports.allTicket = asyncHandler(async (req,res,next) => {
         const resp = await axios.get(`${ipdbticket}/user/${req.userId}`);
         if (resp) {
             req.data = resp.data;
+            console.log(req.data.request);
+            req.data.request.forEach(el=>{
+                delete el.userId;
+                delete el.createdAt;
+                delete el.updatedAt;
+                delete el.__v;
+                el.date = timeZoneToDate(el.date);
+            })
         }
         return res.json(req.data);
         next()
@@ -49,6 +57,14 @@ exports.allTicketAdmin = asyncHandler(async(req,res,next) => {
         const resp = await axios.get(`${ipdbticket}`);
         if (resp) {
             req.data = resp.data;
+            // console.log(typeof req.data.request);
+            req.data.request.forEach(el => {
+                delete el.userId;
+                delete el.createdAt;
+                delete el.updatedAt;
+                delete el.__v;
+                el.date = timeZoneToDate(el.date);
+            });
         }
         return res.send(req.data);
         next()
